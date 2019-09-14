@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  db:
+    restart: always
+    image: postgres:11-alpine
+    ports:
+      - 4306:3306
+    volumes:
+      - postgresql-data:/var/lib/postgresql
+  app:
+    build:
+      context: .
+      dockerfile: ./docker_dev/Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid &&
+                      bundle exec rails s -p 4000 -b '0.0.0.0'"
+    volumes:
+      - .:/team_devChallenges
+      - "bundle:/usr/local/bundle"
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+
+volumes:
+  bundle:
+    driver: local
+  postgresql-data:
+    driver: local
