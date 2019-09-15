@@ -21,6 +21,8 @@ gem 'devise-i18n-views'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'rails-i18n'
 gem 'rspec-rails'
 

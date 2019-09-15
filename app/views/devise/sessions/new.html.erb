@@ -1,9 +1,7 @@
 <div class="container" id="devise-log">
   <h1><%= t('.sign_in') %></h1>
-
+  <%= render 'shared/flash_messages' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= bootstrap_devise_error_messages! %>
-
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>

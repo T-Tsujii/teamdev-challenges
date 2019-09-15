@@ -17,33 +17,27 @@ ActiveRecord::Schema.define(version: 2019_09_14_042640) do
 
   create_table "languages", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "order", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_languages_on_name"
-    t.index ["user_id", "order"], name: "index_languages_on_user_id_and_order", unique: true
   end
 
   create_table "learnings", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "order", null: false
     t.string "type", null: false
     t.string "name", null: false
     t.integer "comprehension"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "order"], name: "index_learnings_on_user_id_and_order", unique: true
   end
 
   create_table "my_sites", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "order", null: false
     t.string "name", null: false
     t.string "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "order"], name: "index_my_sites_on_user_id_and_order", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
@@ -56,12 +50,10 @@ ActiveRecord::Schema.define(version: 2019_09_14_042640) do
 
   create_table "preferred_languages", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "order", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_preferred_languages_on_name"
-    t.index ["user_id", "order"], name: "index_preferred_languages_on_user_id_and_order", unique: true
   end
 
   create_table "team_languages", force: :cascade do |t|
@@ -83,12 +75,10 @@ ActiveRecord::Schema.define(version: 2019_09_14_042640) do
   create_table "teams", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
-    t.string "language", null: false
     t.text "content"
     t.boolean "recruitment", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["language"], name: "index_teams_on_language"
     t.index ["name"], name: "index_teams_on_name", unique: true
   end
 
@@ -102,10 +92,12 @@ ActiveRecord::Schema.define(version: 2019_09_14_042640) do
     t.datetime "updated_at", null: false
     t.string "uid"
     t.string "provider"
+    t.string "image_url"
     t.string "name"
-    t.string "content"
+    t.text "content"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

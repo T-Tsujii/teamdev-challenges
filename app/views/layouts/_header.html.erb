@@ -34,7 +34,7 @@
               <i class="fa fa-network-wired"></i> オプション
             </span>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "協力者募集", home_recruitment_path, class: 'dropdown-item' %>
+              <%= link_to "協力者募集", homes_recruitment_path, class: 'dropdown-item' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </li>
@@ -44,8 +44,8 @@
               <i class="fa fa-network-wired"></i> オプション
             </span>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "Team DevChallengesとは", home_about_path, class: 'dropdown-item' %>
-              <%= link_to "協力者募集", home_recruitment_path, class: 'dropdown-item' %>
+              <%= link_to "Team DevChallengesとは", homes_about_path, class: 'dropdown-item' %>
+              <%= link_to "協力者募集", homes_recruitment_path, class: 'dropdown-item' %>
             </div>
           </li>
           <li class="nav-item active">

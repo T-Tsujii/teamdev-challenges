@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  get '/home/about', to: 'home#about'
-  get '/home/recruitment', to: 'home#recruitment'
-  devise_for :users
+  root 'homes#index'
+  get '/homes/about', to: 'homes#about'
+  get '/homes/recruitment', to: 'homes#recruitment'
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users
 end

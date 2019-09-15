@@ -18,15 +18,25 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Anton|Damion&display=swap');
 
+html {
+  height: 100%;
+}
 body {
   background-image: url("index.jpg");
   font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
   "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
   "MS PGothic", sans-serif;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  div.content {
+    flex: 1;
+  }
 }
 
 nav.navbar {
-  div.dropdown-menu{
+  div.dropdown-menu {
     background-image: url("index.jpg");
   }
 
@@ -63,4 +73,30 @@ nav.navbar {
     }
   }
 
+}
+
+div.index_button {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* フラッシュ */
+.alert-alert {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-notice {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+footer {
+  height: 1.4rem; /*フッターの高さ*/
+
+  hr, div, p {
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+  }
 }
