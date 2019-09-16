@@ -11,9 +11,9 @@ class User < ApplicationRecord
   validates :content, length: { maximum: 2000 }
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+  # :lockable, :timeoutable, :trackable
+  devise :confirmable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
 
   def self.find_for_oauth(auth)
     def self.find_or_create_from_auth(auth)
