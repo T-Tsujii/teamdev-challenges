@@ -1,0 +1,26 @@
+<%= render 'shared/flash_messages' %>
+<div class="container text-center p-0" id="index-style">
+  <h1>Team DevChallenges</h1>
+  　<h2>〜チーム開発にチャレンジしてみよう！〜</h2>
+  <p>チーム開発練習をしたいけど，声をかけづらい……</p>
+  <p>そんなあなた！メンバーを募集してみませんか？</p>
+  <% unless user_signed_in? %>
+    <div class="index_button row py-3">
+      <div class="col-6">
+        <%= button_to new_user_registration_path, class: "btn btn-primary rounded-pill", method: :get do %>
+          <i class="fa fa-user-plus"></i> 新規登録
+        <% end %>
+      </div>
+      <div class="col-6">
+        <%= button_to new_user_session_path, class: "btn btn-primary rounded-pill", method: :get do %>
+          <i class="fa fa-sign-in-alt"></i> ログイン
+        <% end %>
+      </div>
+    </div>
+    <div class="py-3">
+      <%= button_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-primary rounded-pill" do %>
+        <i class="fab fa-twitter"></i> Twitterでログイン
+      <% end %>
+    </div>
+  <% end %>
+</div>
