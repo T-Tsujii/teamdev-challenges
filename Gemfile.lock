@@ -299,7 +299,7 @@ DEPENDENCIES
   kaminari
   launchy
   listen (>= 3.0.5, < 3.2)
-  omniauth
+  omniauth (<= 1.9.0)
   omniauth-twitter
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
@@ -316,7 +316,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.4p104
 
 BUNDLED WITH
    2.0.2
