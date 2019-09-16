@@ -15,20 +15,31 @@ ja:
         resend_confirmation_instructions: "アカウント確認メール再送"
     mailer:
       confirmation_instructions:
-        action: "アカウント確認"
-        greeting: "ようこそ、%{recipient}さん!"
-        instruction: "次のリンクでメールアドレスの確認が完了します:"
+        action: メールアドレスの確認
+        greeting: "%{recipient}様"
+        instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
+        subject: メールアドレス確認メール
+      email_changed:
+        greeting: こんにちは、%{recipient}様。
+        message: あなたのメール変更（%{email}）のお知らせいたします。
+        subject: メール変更完了。
+      password_change:
+        greeting: "%{recipient}様"
+        message: パスワードが再設定されたことを通知します。
+        subject: パスワードの変更について
       reset_password_instructions:
-        action: "パスワード変更"
-        greeting: "こんにちは、%{recipient}さん!"
-        instruction: "誰かがパスワードの再設定を希望しました。次のリンクでパスワードの再設定が出来ます。"
-        instruction_2: "あなたが希望したのではないのなら、このメールは無視してください。"
-        instruction_3: "上のリンクにアクセスして新しいパスワードを設定するまで、パスワードは変更されません。"
+        action: パスワード変更
+        greeting: "%{recipient}様"
+        instruction: パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます。
+        instruction_2: パスワード再設定の依頼をしていない場合、このメールを無視してください。
+        instruction_3: パスワードの再設定は、上のリンクから新しいパスワードを登録するまで完了しません。
+        subject: パスワードの再設定について
       unlock_instructions:
-        action: "アカウントのロック解除"
-        greeting: "こんにちは、%{recipient}さん!"
-        instruction: "アカウントのロックを解除するには下のリンクをクリックしてください。"
-        message: "ログイン失敗が繰り返されたため、アカウントはロックされています。"
+        action: アカウントのロック解除
+        greeting: "%{recipient}様"
+        instruction: アカウントのロックを解除するには下のリンクをクリックしてください。
+        message: ログイン失敗が繰り返されたため、アカウントはロックされています。
+        subject: アカウントの凍結解除について
     passwords:
       edit:
         change_my_password: "パスワードを変更する"
