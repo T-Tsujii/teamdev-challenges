@@ -1,6 +1,6 @@
-FROM ruby:2.6.3-alpine
+FROM ruby:2.6.4-alpine
 ENV LANG C.UTF-8
-ENV APP /team_devChallenges
+ENV APP /teamdev_challenges
 RUN apk update \
  && apk upgrade --no-cache \
  && apk add --update --no-cache \

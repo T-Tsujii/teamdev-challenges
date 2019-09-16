@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.4'
 
 gem 'rails', '~> 5.2.3'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -21,7 +21,7 @@ gem 'devise-i18n-views'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'kaminari'
-gem 'omniauth'
+gem 'omniauth', '<= 1.9.0'
 gem 'omniauth-twitter'
 gem 'rails-i18n'
 gem 'rspec-rails'
