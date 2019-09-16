@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: team_devChallenges_development
+  database: teamdev_challenges_development
 
 test:
   <<: *default
-  database: team_devChallenges_test
+  database: teamdev_challenges_test
 
 production:
   <<: *default
-  database: team_devChallenges_production
-  username: team_devChallenges
-  password: <%= ENV['TEAM_DEVCHALLENGES_DATABASE_PASSWORD'] %>
+  database: teamdev_challenges_production
+  username: teamdev_challenges
+  password: <%= ENV['TEAMDEV_CHALLENGES_DATABASE_PASSWORD'] %>

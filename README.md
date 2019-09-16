@@ -1,24 +1,54 @@
-# README
+#TeamDev Challenges
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+　チーム開発の練習をするメンバーを募集するWebサービスです。
 
-Things you may want to cover:
+　実務はチーム開発であるため，プログラミング初心者がチーム開発力を付けることは重要です。Gitの使い方，相談の仕方，プルリクやコードレビューなどは，個人開発で身に付く技術ではありません。ところが……
 
-* Ruby version
+- まだまだ初心者だから声をかけづらい……
+- 募集しようとしたものの自らの影響力が小さすぎてメンバーが集まらない
+- 経済的な事情でスクールには通えない
 
-* System dependencies
+などの理由で断念し，個人開発に終始する方が多いように感じられます。
 
-* Configuration
+　そこで，専用のWebサイトがあればこのような問題を解決することができるのではないかと考え，作成に至りました。
 
-* Database creation
+## WebサイトのURL
 
-* Database initialization
+　[https://teamdev-challenges.herokuapp.com/](https://teamdev-challenges.herokuapp.com/)
 
-* How to run the test suite
+- テストログイン用のアカウント★予定★
+  - 【メールアドレス】test@example.com
+  - 【パスワード】password
+  
+## 使用技術
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ruby 2.6.4
+- Rails 5.2.3
+- Docker 19.03.2
+- GitHub
+- Heroku
+- Bootstrap
 
-* Deployment instructions
+　このWebサイト自体の向上を目指すメンバーを募集する可能性を想定し，Dockerで開発環境を構築しております。イメージを小さくするため，Alpineベースにしております。
 
-* ...
+　GitHubと連携し，masterブランチにプッシュすると自動テスト(★予定★)，自動デプロイされる設定にしております。
+
+## 概要
+
+
+
+## 機能一覧
+
+- ログイン機能(devise)
+  - フラッシュ・エラーメッセージ・メール本文の日本語化
+  - メール認証機能（認証時点でログインする仕様に変更）
+  - Twitterログイン機能の追加(omniauth)★予定★
+- ユーザープロフィール機能★予定★
+- ユーザー・チーム検索機能(ransack)★予定★
+- チームチャット機能★予定★
+  - ページネーション機能(kaminari)★予定★
+- チーム開発の基礎解説ページ★予定★
+
+## テスト
+
+## 改善したい機能
