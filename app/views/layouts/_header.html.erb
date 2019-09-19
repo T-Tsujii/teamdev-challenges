@@ -9,20 +9,20 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="nav-link dropdown-toggle" id="navbarDropdown_team" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-users"></i> チーム
             </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown_team">
               <%= link_to '参加チーム状況', root_path, class: 'dropdown-item' %>
               <%= link_to 'チーム検索', root_path, class: 'dropdown-item' %>
               <%= link_to '新規チーム作成', root_path, class: 'dropdown-item' %>
             </div>
           </li>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="nav-link dropdown-toggle" id="navbarDropdown_user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-user"></i> ユーザー
             </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
               <%= link_to 'ユーザー一覧', root_path, class: 'dropdown-item' %>
               <%= link_to 'ユーザー情報', root_path, class: 'dropdown-item' %>
               <%= link_to 'ユーザー編集', root_path, class: 'dropdown-item' %>
@@ -30,31 +30,31 @@
             </div>
           </li>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-network-wired"></i> オプション
             </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown_option">
               <%= link_to "協力者募集", homes_recruitment_path, class: 'dropdown-item' %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'menu_sign_out' %>
             </div>
           </li>
         <% else %>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-network-wired"></i> オプション
             </span>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown_option">
               <%= link_to "TeamDev Challengesとは", homes_about_path, class: 'dropdown-item' %>
               <%= link_to "協力者募集", homes_recruitment_path, class: 'dropdown-item' %>
             </div>
           </li>
           <li class="nav-item active">
-            <%= link_to new_user_registration_path, class: 'nav-link' do %>
+            <%= link_to new_user_registration_path, class: 'nav-link', id: 'menu_sign_up' do %>
               <i class="fa fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li class="nav-item active">
-            <%= link_to new_user_session_path, class: 'nav-link' do %>
+            <%= link_to new_user_session_path, class: 'nav-link', id: 'menu_sign_in' do %>
               <i class="fa fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>

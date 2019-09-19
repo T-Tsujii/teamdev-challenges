@@ -21,15 +21,15 @@ gem 'devise-i18n-views'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'kaminari'
-gem 'omniauth', '<= 1.9.0'
+gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'rails-i18n'
-gem 'rspec-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -44,4 +44,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'launchy'
+  gem 'webdrivers'
 end
