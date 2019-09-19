@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :name,    length: { maximum: 40 }
   validates :content, length: { maximum: 2000 }
 
+  validates :provider, uniqueness: { scope: :uid }, allow_nil: true
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable
   devise :confirmable, :database_authenticatable, :registerable,
