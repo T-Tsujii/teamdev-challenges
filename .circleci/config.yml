@@ -71,25 +71,28 @@ jobs:
       - checkout
       - run:
           name: build docker image
-          command: |
-            cp docker_dev/Dockerfile Dockerfile
-            docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
+          command: docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
       - run:
           name: setup heroku command
           command: bash .circleci/heroku_setup.sh
       - run:
           name: heroku maintenance on
-          command: heroku maintenance:on --app ${HEROKU_APP_NAME}
+          command: heroku maintenance:on -a ${HEROKU_APP_NAME}
       - run:
-          name: push container to registry.heroku.com
+          name: deploy to heroku
           command: |
             docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
             docker push registry.heroku.com/${HEROKU_APP_NAME}/web
-            heroku container:push web --app ${HEROKU_APP_NAME}
-            heroku container:release web --app ${HEROKU_APP_NAME}
+            heroku container:push web -a ${HEROKU_APP_NAME}
+      - run:
+          name: rails db migrate
+          command: heroku run rails db:migrate -a ${HEROKU_APP_NAME}
+      - run:
+          name: release app
+          command: heroku container:release web -a ${HEROKU_APP_NAME}
       - run:
           name: heroku maintenance off
-          command: heroku maintenance:off --app ${HEROKU_APP_NAME}
+          command: heroku maintenance:off -a ${HEROKU_APP_NAME}
 
 workflows:
   version: 2.1
