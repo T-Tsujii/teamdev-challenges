@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="py-3">
-      <%= link_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-primary rounded-pill", id: "index_twitter" do %>
+      <%= link_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-primary rounded-pill", id: "index_twitter", method: :post do %>
         <i class="fab fa-twitter"></i> Twitterでログイン
       <% end %>
     </div>

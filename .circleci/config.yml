@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     parallelism: 3
@@ -13,10 +13,7 @@ jobs:
           RAILS_ENV: test
       - image: circleci/postgres:11-alpine
         environment:
-          POSTGRES_DATABASE: teamdev_challenges_test
           POSTGRES_ALLOW_EMPTY_PASSWORD: true
-          POSTGRES_ROOT_HOST: '%'
-          POSTGRES_USER: postgres
     steps:
       - checkout
 
@@ -32,15 +29,15 @@ jobs:
 
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
+            - teamdev_challenges-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - teamdev_challenges-bundle-v2-
 
       - run:
           name: Bundle Install
           command: bundle check --path vendor/bundle || bundle install --deployment
 
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: teamdev_challenges-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
@@ -51,10 +48,9 @@ jobs:
       - run:
           name: Database setup
           command: |
+            mv ./config/database.yml.ci ./config/database.yml
             bin/rails db:create db:schema:load --trace
             bin/rails db:migrate
-          environment:
-            DATABASE_URL: postgres://postgres@localhost:5432/teamdev_challenges_test
 
       - run:
           name: Run rspec in parallel
@@ -64,8 +60,43 @@ jobs:
                               --out test_results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-          environment:
-            DATABASE_URL: postgres://postgres@localhost:5432/teamdev_challenges_test
 
       - store_test_results:
-          path: test_resultss
+          path: test_results
+
+  deploy:
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: build docker image
+          command: docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web .
+      - run:
+          name: setup heroku command
+          command: bash .circleci/setup_heroku.sh
+      - run:
+          name: heroku maintenance on
+          command: heroku maintenance:on --app ${HEROKU_APP_NAME}
+      - run:
+          name: push container to registry.heroku.com
+          command: |
+            docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
+            docker push registry.heroku.com/${HEROKU_APP_NAME}/web
+            heroku container:push web --app ${HEROKU_APP_NAME}
+            heroku container:release web --app ${HEROKU_APP_NAME}
+      - run:
+          name: heroku maintenance off
+          command: heroku maintenance:off --app ${HEROKU_APP_NAME}
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
