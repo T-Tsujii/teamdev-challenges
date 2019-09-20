@@ -45,4 +45,5 @@ group :test do
   gem 'chromedriver-helper'
   gem 'launchy'
   gem 'webdrivers'
+  gem 'rspec_junit_formatter'
 end
