@@ -22,6 +22,7 @@ gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-twitter'
 gem 'rails-i18n'
 
