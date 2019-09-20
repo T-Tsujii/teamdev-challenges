@@ -1,6 +1,5 @@
 FROM ruby:2.6.4-alpine3.10
 ENV LANG C.UTF-8
-ENV APP /teamdev_challenges
 RUN apk update \
  && apk upgrade --no-cache \
  && apk add --update --no-cache \
@@ -17,15 +16,5 @@ RUN apk update \
       postgresql-dev \
       ruby-dev \
       tzdata \
-      zlib-dev \
- && gem install -q -N \
-      bundler \
-      pkg-config \
-      rails:5.2.3 \
-      nokogiri
-WORKDIR $APP
-COPY Gemfile Gemfile.lock ./
-RUN bundle install --jobs=4 --retry=3
-ENV RAILS_SERVE_STATIC_FILES=1
+      zlib-dev
 EXPOSE 5432
-EXPOSE 4000
