@@ -24,8 +24,9 @@ RUN apk update \
       rails:5.2.3 \
       nokogiri
 WORKDIR $APP
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock $APP/
 RUN bundle install --jobs=4 --retry=3
+COPY . $APP
 ENV RAILS_SERVE_STATIC_FILES=1
 EXPOSE 5432
 EXPOSE 4000
