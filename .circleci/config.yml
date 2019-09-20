@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     parallelism: 3
@@ -32,15 +32,15 @@ jobs:
 
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
+            - teamdev_challenges-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - teamdev_challenges-bundle-v2-
 
       - run:
           name: Bundle Install
           command: bundle check --path vendor/bundle || bundle install --deployment
 
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: teamdev_challenges-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
@@ -53,8 +53,6 @@ jobs:
           command: |
             bin/rails db:create db:schema:load --trace
             bin/rails db:migrate
-          environment:
-            DATABASE_URL: postgres://postgres@localhost:5432/teamdev_challenges_test
 
       - run:
           name: Run rspec in parallel
@@ -64,8 +62,6 @@ jobs:
                               --out test_results/rspec.xml \
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-          environment:
-            DATABASE_URL: postgres://postgres@localhost:5432/teamdev_challenges_test
 
       - store_test_results:
           path: test_resultss
