@@ -70,11 +70,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: build docker image
-          command: docker build --rm=false -t registry.heroku.com/${HEROKU_APP_NAME}/web ./docker_test/
-      - run:
           name: setup heroku command
-          command: bash .circleci/setup_heroku.sh
+          command: bash .circleci/heroku_setup.sh
       - run:
           name: heroku maintenance on
           command: heroku maintenance:on --app ${HEROKU_APP_NAME}
