@@ -13,14 +13,16 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Anton|Damion&display=swap');
 
+/* 基本設定 */
 html {
   height: 100%;
 }
+
 body {
   background-image: url("index.jpg");
   font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
@@ -35,6 +37,7 @@ body {
   }
 }
 
+/* ナビバー */
 nav.navbar {
   div.dropdown-menu {
     background-image: url("index.jpg");
@@ -72,23 +75,6 @@ nav.navbar {
       }
     }
   }
-
-}
-
-div.index_button {
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* フラッシュ */
-.alert-alert {
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-}
-
-.alert-notice {
-  background-color: #d4edda;
-  border-color: #c3e6cb;
 }
 
 footer {

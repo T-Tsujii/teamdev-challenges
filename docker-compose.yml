@@ -8,16 +8,14 @@ services:
     volumes:
       - postgresql-data:/var/lib/postgresql
   app:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    build: .
     command: bash -c "rm -f tmp/pids/server.pid &&
-                      bin/rails s -p 4000 -b '0.0.0.0'"
+                      bin/rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/teamdev_challenges
-      - "bundle:/usr/local/bundle"
+      - bundle:/usr/local/bundle
     ports:
-      - "4000:4000"
+      - 3000:3000
     depends_on:
       - db
       - chrome

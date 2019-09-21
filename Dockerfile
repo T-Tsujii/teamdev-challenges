@@ -6,18 +6,15 @@ RUN apk update \
  && apk add --update --no-cache \
       build-base \
       bash \
-      curl-dev \
       git \
       linux-headers \
       libc-dev \
       libxml2-dev \
       libxslt-dev \
       nodejs \
-      postgresql-client \
+      postgresql \
       postgresql-dev \
-      ruby-dev \
       tzdata \
-      zlib-dev \
  && gem install -q -N \
       bundler \
       pkg-config \
@@ -29,4 +26,5 @@ RUN bundle install --jobs=4 --retry=3
 COPY . $APP
 ENV RAILS_SERVE_STATIC_FILES=1
 EXPOSE 5432
-EXPOSE 4000
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]

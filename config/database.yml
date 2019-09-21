@@ -17,5 +17,3 @@ test:
 production:
   <<: *default
   database: teamdev_challenges_production
-  username: teamdev_challenges
-  password: <%= ENV['TEAMDEV_CHALLENGES_DATABASE_PASSWORD'] %>
