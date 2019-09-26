@@ -29,6 +29,8 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do

@@ -53,3 +53,12 @@ div.index_button {
   max-width: 300px;
   margin: 0 auto;
 }
+
+table.home-index-buttons {
+  margin: auto;
+  max-width: 750px;
+  table-layout: fixed;
+  @media (max-width: 767px) {
+    max-width: 375px;
+  }
+}

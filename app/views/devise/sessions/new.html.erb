@@ -1,4 +1,4 @@
-<div class="container" id="devise-log">
+<div class="container-fluid" id="devise-log">
   <h1><%= t('.sign_in') %></h1>
   <%= render 'shared/flash_messages' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,7 +22,9 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.submit t('.sign_in'), class: 'btn btn-primary btn-block' %>
+      <%= button_tag type: 'submit', class: 'btn btn-primary btn-block' do %>
+        <i class="fa fa-sign-in-alt"></i> ログイン
+      <% end %>
     </div>
   <% end %>
 

@@ -6,5 +6,5 @@ class MySite < ApplicationRecord
   validates :url,     presence: true,
                       length: { maximum: 200 },
                       format: { with: %r{\Ahttp[s]?:\/\/[\w-]+\.[\w-]+},
-                                message: "URLが正しくありません。" }
+                                message: "が正しくありません。" }
 end

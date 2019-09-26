@@ -1,0 +1,30 @@
+/* 自己紹介サイト */
+
+.table td {
+
+  &.my_site_name {
+    width: 25%;
+    max-width: 300px;
+  }
+
+  &.my_site_url {
+    width: 75%;
+  }
+
+  &.my_site_name, &.my_site_url {
+    padding: 0.5rem 0 0 0;
+  }
+
+  @media (max-width: 767px) {
+    display: block;
+    width: 100% !important;
+
+    &.my_site_url {
+      padding: 0;
+    }
+  }
+}
+
+.my-nickname {
+  max-width: 300px;
+}
