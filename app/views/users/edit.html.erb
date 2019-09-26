@@ -1,0 +1,98 @@
+<%= render 'shared/flash_messages' %>
+
+<div class="container-fluid">
+  <h2>ユーザー情報編集</h2>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#user-base" class="nav-link active" data-toggle="tab">基本情報</a>
+    </li>
+    <li class="nav-item">
+      <a href="#user-my-link" class="nav-link" data-toggle="tab">リンク</a>
+    </li>
+    <li class="nav-item">
+      <a href="#user-team" class="nav-link" data-toggle="tab">チーム</a>
+    </li>
+    <li class="nav-item">
+      <a href="#user-language" class="nav-link" data-toggle="tab">言語</a>
+    </li>
+    <li class="nav-item">
+      <a href="#user-learning" class="nav-link" data-toggle="tab">学習</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="user-base" class="tab-pane active">
+      <%= form_with model: @user, local: true do |form| %>
+        <div class="form-group pt-2">
+          <%= form.label :name, class: 'control-label' %>
+          <%= form.text_field :name, class: 'form-control my-nickname' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :image, class: 'control-label' %>
+          <%= form.file_field :image, class: 'form-control-file' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :content, class: 'control-label' %>
+          <%= form.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit '基本情報を更新する', class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="user-my-link" class="tab-pane">
+      <%= form_with url: user_my_sites_path(@user.id), method: :patch, local: true do |form| %>
+        <table class="table">
+          <% @my_sites.each do |my_site| %>
+            <%= form.fields_for "my_sites[]", my_site do |f| %>
+              <tr>
+                <td class="my_site_name">
+                  <div class="input-group">
+                    <%= f.text_field :name, class: 'form-control my_site_name pr-1', list: 'my_site_list', placeholder: 'サイト名' %>
+                    <span class="clear-button"><i class="fa fa-times"></i></span>
+                  </div>
+                </td>
+                <td class="my_site_url">
+                  <div class="input-group">
+                    <%= f.text_field :url, class: 'form-control my_site_url', placeholder: 'URL' %>
+                    <span class="clear-button"><i class="fa fa-times"></i></span>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+          <datalist id="my_site_list">
+            <option value="Twitter">
+            <option value="Facebook">
+            <option value="GitHub">
+            <option value="YouTube">
+            <option value="ブログ">
+          </datalist>
+        </table>
+        <div class="form-group">
+          <%= form.submit 'リンクを更新する', class: 'btn btn-primary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+    <div id="user-team" class="tab-pane">
+      <%= form_with model: @user, local: true do |form| %>
+        <%= form.label :teams, class: 'control-label' %>
+        <ul>
+          <% @user.teams.each do |team| %>
+            <li>
+              <%= team.name %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div id="user-language" class="tab-pane">
+    </div>
+    <div id="user-learning" class="tab-pane">
+    </div>
+  </div>
+</div>

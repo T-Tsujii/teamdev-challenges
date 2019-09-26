@@ -13,12 +13,24 @@
  *= require_tree .
  *= require_self
  */
-
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Anton|Damion&display=swap');
 
 /* 基本設定 */
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
 html {
   height: 100%;
 }
@@ -37,13 +49,50 @@ body {
   }
 }
 
+span.clear-button {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem;
+  margin: auto;
+  cursor: pointer;
+  color: #bbb;
+}
+
+.table td {
+  border: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.form-control::placeholder {
+  color: #bbb;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #bbb;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #bbb;
+}
+
+
+/* オーバーライド */
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 992px;
+}
+
 /* ナビバー */
 nav.navbar {
   div.dropdown-menu {
     background-image: url("index.jpg");
   }
 
-  a.navbar-brand {
+  span.navbar-brand {
     font-family: 'Anton', sans-serif;
     //font-family: 'Damion', cursive;
   }

@@ -1,26 +1,35 @@
 <%= render 'shared/flash_messages' %>
-<div class="container text-center p-0" id="index-style">
+<div class="container-fluid text-center p-0" id="index-style">
   <h1>TeamDev Challenges</h1>
   　<h2>〜チーム開発にチャレンジしてみよう！〜</h2>
   <p>チーム開発練習をしたいけど，声をかけづらい……</p>
   <p>そんなあなた！メンバーを募集してみませんか？</p>
   <% unless user_signed_in? %>
-    <div class="index_button row py-3">
-      <div class="col-6">
-        <%= link_to new_user_registration_path, class: "btn btn-primary rounded-pill", id: "index_sign_up" do %>
-          <i class="fa fa-user-plus"></i> 新規登録
-        <% end %>
-      </div>
-      <div class="col-6">
-        <%= link_to new_user_session_path, class: "btn btn-primary rounded-pill", id: "index_sign_in" do %>
-          <i class="fa fa-sign-in-alt"></i> ログイン
-        <% end %>
-      </div>
-    </div>
-    <div class="py-3">
-      <%= link_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-primary rounded-pill", id: "index_twitter", method: :post do %>
-        <i class="fab fa-twitter"></i> Twitterでログイン
-      <% end %>
-    </div>
+    <table class="table home-index-buttons">
+      <tr>
+        <td>
+          <%= link_to new_user_session_path, class: "btn btn-primary btn-block", id: "index_sign_in" do %>
+            <i class="fa fa-sign-in-alt"></i> ログイン
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-primary btn-block", id: "index_twitter", method: :post do %>
+            <i class="fab fa-twitter"></i> Twitterでログイン
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to new_user_registration_path, class: "btn btn-primary btn-block", id: "index_sign_up" do %>
+            <i class="fa fa-user-plus"></i> 新規登録
+          <% end %>
+        </td>
+        <td>
+          <%= link_to homes_guest_login_path, class: "btn btn-warning btn-block", id: "test_sign_in", method: :post do %>
+            <i class="fa fa-sign-in-alt"></i> ゲストログイン（閲覧用）
+          <% end %>
+        </td>
+      </tr>
+    </table>
   <% end %>
 </div>
