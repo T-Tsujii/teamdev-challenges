@@ -1,6 +1,8 @@
+<div id="flash_messages">
 <% flash.each do |name, msg| %>
-  <div class="alert alert-<%= name %>" role="alert">
-    <a class="close" data-dismiss="alert">×</a>
+  <div class="alert alert-<%= name %>" role="alert" id="alert">
+    <a href="#" class="close" data-dismiss="alert">×</a>
     <%= msg %>
   </div>
 <% end %>
+</div>

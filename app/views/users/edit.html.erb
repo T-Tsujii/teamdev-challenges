@@ -7,7 +7,7 @@
       <a href="#user-base" class="nav-link active" data-toggle="tab">基本情報</a>
     </li>
     <li class="nav-item">
-      <a href="#user-my-link" class="nav-link" data-toggle="tab">リンク</a>
+      <a href="#user-site" class="nav-link" data-toggle="tab">リンク</a>
     </li>
     <li class="nav-item">
       <a href="#user-team" class="nav-link" data-toggle="tab">チーム</a>
@@ -22,10 +22,14 @@
 
   <div class="tab-content">
     <div id="user-base" class="tab-pane active">
-      <%= form_with model: @user, local: true do |form| %>
+      <%= form_with model: @user do |form| %>
         <div class="form-group pt-2">
           <%= form.label :name, class: 'control-label' %>
-          <%= form.text_field :name, class: 'form-control my-nickname' %>
+          <% if @user.email == 'guest@example.com' %>
+            <%= form.text_field :name, class: 'form-control my-nickname', maxlength: '40', disabled: 'disabled' %>
+          <% else %>
+            <%= form.text_field :name, class: 'form-control my-nickname', maxlength: '40' %>
+          <% end %>
         </div>
 
         <div class="form-group">
@@ -35,46 +39,46 @@
 
         <div class="form-group">
           <%= form.label :content, class: 'control-label' %>
-          <%= form.text_area :content, class: 'form-control', rows: 5 %>
+          <%= form.text_area :content, class: 'form-control', rows: 5, maxlength: '2000' %>
         </div>
 
         <div class="form-group">
-          <%= form.submit '基本情報を更新する', class: 'btn btn-primary btn-block' %>
+          <%= form.submit '基本情報を更新する', class: 'btn btn-primary btn-block', id: 'user-basis-button' %>
         </div>
       <% end %>
     </div>
 
-    <div id="user-my-link" class="tab-pane">
-      <%= form_with url: user_my_sites_path(@user.id), method: :patch, local: true do |form| %>
+    <div id="user-site" class="tab-pane">
+      <%= form_with model: @user, id: 'site-form' do |form| %>
         <table class="table">
-          <% @my_sites.each do |my_site| %>
-            <%= form.fields_for "my_sites[]", my_site do |f| %>
-              <tr>
-                <td class="my_site_name">
-                  <div class="input-group">
-                    <%= f.text_field :name, class: 'form-control my_site_name pr-1', list: 'my_site_list', placeholder: 'サイト名' %>
-                    <span class="clear-button"><i class="fa fa-times"></i></span>
-                  </div>
-                </td>
-                <td class="my_site_url">
-                  <div class="input-group">
-                    <%= f.text_field :url, class: 'form-control my_site_url', placeholder: 'URL' %>
-                    <span class="clear-button"><i class="fa fa-times"></i></span>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
+          <%= form.fields_for :sites do |site_form| %>
+            <tr>
+              <td class="site_name">
+                <div class="input-group">
+                  <%= site_form.text_field :name, class: "form-control site_form site_name", list: 'site_list', placeholder: 'サイト名', maxlength: '30' %>
+                  <span class="clear-button"><i class="far fa-times-circle"></i></span>
+                </div>
+              </td>
+              <td class="site_url">
+                <div class="input-group">
+                  <%= site_form.text_field :url, class: "form-control site_form site_url", placeholder: 'URL', maxlength: '300', pattern: '^|http[s]?:\/\/[\w-]+\.[\w-]+.*$' %>
+                  <span class="clear-button"><i class="far fa-times-circle"></i></span>
+                </div>
+              </td>
+            </tr>
           <% end %>
-          <datalist id="my_site_list">
+          <datalist id="site_list">
             <option value="Twitter">
             <option value="Facebook">
             <option value="GitHub">
+            <option value="Qiita">
             <option value="YouTube">
             <option value="ブログ">
+            <option value="ホームページ">
           </datalist>
         </table>
         <div class="form-group">
-          <%= form.submit 'リンクを更新する', class: 'btn btn-primary btn-block' %>
+          <%= form.submit 'リンクを更新する', class: 'btn btn-primary btn-block', id: 'site-button' %>
         </div>
       <% end %>
     </div>

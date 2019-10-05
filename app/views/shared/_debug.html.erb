@@ -1,3 +1,6 @@
+<% if Rails.env.development? %>
 <div class="container-fluid">
-  <%= debug(params) if Rails.env.development? %>
+  <hr>
+  <%= debug(params) %>
 </div>
+<% end %>

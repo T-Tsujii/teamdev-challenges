@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :my_sites,            dependent: :destroy
+  has_many :sites, dependent: :destroy
+  accepts_nested_attributes_for :sites, allow_destroy: true, reject_if: :reject_all_blank
   has_many :preferred_languages, dependent: :destroy
   has_many :languages,           dependent: :destroy
   has_many :learnings,           dependent: :destroy
@@ -32,6 +33,19 @@ class User < ApplicationRecord
   end
 
   private
+
+  def attributes_blank?(attributes)
+    attributes.except(:id).values.join.blank?
+  end
+
+  def reject_all_blank(attributes)
+    if attributes[:id].present?
+      attributes.merge!(_destroy: true) if attributes_blank?(attributes)
+      false
+    else
+      attributes_blank?(attributes)
+    end
+  end
 
   # ダミーのアドレスを用意
   def self.dummy_email(auth)

@@ -13,13 +13,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery3
-
-// document.getElementByClass('my_site_name').addEventListener('input', function handleInput (event) {
-//     console.log(event.target.value);
-// }, false);
-
-$(function(){
-    $('.clear-button').click(function(){
-        $(this).parent().find('input').val('');
-    });
-});
+//= require_tree .

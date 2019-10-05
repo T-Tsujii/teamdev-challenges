@@ -19,18 +19,7 @@
 
 /* 基本設定 */
 
-input:focus::-webkit-input-placeholder {
-  color: transparent;
-}
-
-input:focus:-moz-placeholder {
-  color: transparent;
-}
-
-input:focus::-moz-placeholder {
-  color: transparent;
-}
-
+// フッターを一番下に配置する設定を含む
 html {
   height: 100%;
 }
@@ -49,23 +38,28 @@ body {
   }
 }
 
-span.clear-button {
-  position: absolute;
-  right: 0.75rem;
-  top: 0.5rem;
-  margin: auto;
-  cursor: pointer;
-  color: #bbb;
+// フォーム選択時にplaceholderを無効
+input:focus::placeholder {
+  color: transparent;
+  transition: .1s;
 }
 
-.table td {
-  border: none;
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+  transition: .1s;
 }
 
-input::-webkit-calendar-picker-indicator {
-  display: none;
+input:focus:-moz-placeholder {
+  color: transparent;
+  transition: .1s;
 }
 
+input:focus::-moz-placeholder {
+  color: transparent;
+  transition: .1s;
+}
+
+// placeholderの色を薄くする
 .form-control::placeholder {
   color: #bbb;
 }
@@ -78,8 +72,40 @@ input::-webkit-calendar-picker-indicator {
   color: #bbb;
 }
 
+// tableの境界線を消す
 
-/* オーバーライド */
+.table td {
+  border: none;
+}
+
+// エラーの出たフォームのレイアウトを崩れるのを防止＋赤枠に変更
+.field_with_errors {
+  display: contents;
+  input {
+    border-color: #dc3545;
+  }
+}
+
+// フラッシュメッセージを消す
+.delete_flush_message {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+// クリアボタン
+span.clear-button {
+  visibility: hidden;
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+  margin: auto;
+  cursor: pointer;
+  color: #bbb;
+  z-index: 10;
+}
+
+// container-fluid のオーバーライド
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
@@ -110,7 +136,6 @@ nav.navbar {
 
     li.nav-logout:hover {
       background-color: #f88;
-
     }
 
     div.dropdown-menu {

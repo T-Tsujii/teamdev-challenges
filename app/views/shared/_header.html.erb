@@ -9,9 +9,9 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown_team" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown_team" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-users"></i> チーム
-            </span>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown_team">
               <%= link_to '参加チーム状況', root_path, class: 'dropdown-item' %>
               <%= link_to 'チーム検索', root_path, class: 'dropdown-item' %>
@@ -19,9 +19,9 @@
             </div>
           </li>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown_user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown_user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-user"></i> ユーザー
-            </span>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
               <%= link_to 'ユーザー一覧', users_path, class: 'dropdown-item' %>
               <%= link_to 'ユーザー情報', user_path(current_user), class: 'dropdown-item' %>
@@ -29,9 +29,9 @@
             </div>
           </li>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-network-wired"></i> オプション
-            </span>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown_option">
               <%= link_to "トップページ", root_path, class: 'dropdown-item' %>
               <%= link_to "協力者募集", homes_recruitment_path, class: 'dropdown-item' %>
@@ -40,9 +40,9 @@
           </li>
         <% else %>
           <li class="nav-item dropdown active">
-            <span class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-network-wired"></i> オプション
-            </span>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown_option">
               <%= link_to "トップページ", root_path, class: 'dropdown-item' %>
               <%= link_to "TeamDev Challengesとは", homes_about_path, class: 'dropdown-item' %>
