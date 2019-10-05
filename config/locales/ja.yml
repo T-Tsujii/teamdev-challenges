@@ -2,13 +2,16 @@ ja:
   activerecord:
     attributes:
       user:
-        name: 'ニックネーム'
-        content: '自己紹介文'
+        name: 'ニックネーム（４０文字以内）'
+        content: '自己紹介文（２０００文字以内）'
         image: 'アイコン'
         teams: '参加チーム'
-        my_sites: 'URL'
+        sites: 'URL'
         preferred_languages: '共同開発で使用したい言語'
         languages: '学習済み言語'
+      user/sites:
+        name: 'サイト名'
+        url: 'URL'
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

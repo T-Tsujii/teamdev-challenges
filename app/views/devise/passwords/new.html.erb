@@ -1,4 +1,4 @@
-<div class="containe-fluid" id="devise-log">
+<div class="container-fluid" id="devise-log">
   <h1><%= t('.forgot_your_password') %></h1>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
@@ -6,7 +6,7 @@
 
     <div class="form-group">
       <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true %>
     </div>
 
     <div class="form-group">

@@ -32,14 +32,6 @@ ActiveRecord::Schema.define(version: 2019_09_14_042640) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "my_sites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "name", null: false
-    t.string "url", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer "team_id", null: false
     t.integer "user_id", null: false
@@ -54,6 +46,14 @@ ActiveRecord::Schema.define(version: 2019_09_14_042640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_preferred_languages_on_name"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "team_languages", force: :cascade do |t|

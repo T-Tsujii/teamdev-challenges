@@ -14,12 +14,24 @@
 //= require activestorage
 //= require jquery3
 
-// document.getElementByClass('my_site_name').addEventListener('input', function handleInput (event) {
-//     console.log(event.target.value);
-// }, false);
-
-$(function(){
-    $('.clear-button').click(function(){
-        $(this).parent().find('input').val('');
+$(function() {
+    $("input.site_form").focus(function() {
+        $('#site_button').prop('disabled', false);
+    }).blur(function() {
+        let empty_name_subscripts = '';
+        $("input.site_name").each(function(index, dom) {
+            if ($(dom).val() === '') {
+                empty_name_subscripts += index;
+            }
+        });
+        let empty_url_subscripts = '';
+        $("input.site_url").each(function(index, dom) {
+            if ($(dom).val() === '') {
+                empty_url_subscripts += index;
+            }
+        });
+        if (empty_name_subscripts !== empty_url_subscripts) {
+            $('#site_button').prop('disabled', true);
+        }
     });
 });
