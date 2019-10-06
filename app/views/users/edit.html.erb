@@ -53,21 +53,23 @@
         <table class="table">
           <%= form.fields_for :sites do |site_form| %>
             <tr>
-              <td class="site_name">
+              <td class="site-name">
                 <div class="input-group">
-                  <%= site_form.text_field :name, class: "form-control site_form site_name", list: 'site_list', placeholder: 'サイト名', maxlength: '30' %>
+                  <%= site_form.text_field :name, class: "form-control site-form",
+                    list: 'site-list', placeholder: 'サイト名', maxlength: '30' %>
                   <span class="clear-button"><i class="far fa-times-circle"></i></span>
                 </div>
               </td>
-              <td class="site_url">
+              <td class="site-url">
                 <div class="input-group">
-                  <%= site_form.text_field :url, class: "form-control site_form site_url", placeholder: 'URL', maxlength: '300', pattern: '^|http[s]?:\/\/[\w-]+\.[\w-]+.*$' %>
+                  <%= site_form.text_field :url, class: "form-control site-form",
+                    placeholder: 'URL', maxlength: '300', pattern: '^|http[s]?:\/\/[\w-]+\.[\w-]+.*$' %>
                   <span class="clear-button"><i class="far fa-times-circle"></i></span>
                 </div>
               </td>
             </tr>
           <% end %>
-          <datalist id="site_list">
+          <datalist id="site-list">
             <option value="Twitter">
             <option value="Facebook">
             <option value="GitHub">

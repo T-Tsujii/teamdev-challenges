@@ -2,16 +2,16 @@
 
 .table td {
 
-  &.site_name {
+  &.site-name {
     width: 25%;
     max-width: 300px;
   }
 
-  &.site_url {
+  &.site-url {
     width: 75%;
   }
 
-  &.site_name, &.site_url {
+  &.site-name, &.site-url {
     padding: 0.5rem 0 0 0;
   }
 
@@ -19,7 +19,7 @@
     display: block;
     width: 100% !important;
 
-    &.site_url {
+    &.site-url {
       padding: 0;
     }
   }
@@ -29,6 +29,6 @@
   max-width: 300px;
 }
 
-.site_form {
+input.site-form {
   padding-left: 2rem;
 }

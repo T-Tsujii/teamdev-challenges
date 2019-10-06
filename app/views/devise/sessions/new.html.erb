@@ -1,5 +1,11 @@
 <div class="container-fluid" id="devise-log">
   <h1><%= t('.sign_in') %></h1>
+  <div class="form-group">
+    <%= link_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-twitter btn-block", method: :post do %>
+      <i class="fab fa-twitter"></i> Twitterでログイン
+    <% end %>
+  </div>
+  <p class="text-divide">または</p>
   <%= render 'shared/flash_messages' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
@@ -22,11 +28,11 @@
     <% end %>
 
     <div class="form-group">
-      <%= button_tag type: 'submit', class: 'btn btn-primary btn-block' do %>
+      <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
         <i class="fa fa-sign-in-alt"></i> ログイン
       <% end %>
     </div>
   <% end %>
-
+  <hr class="border-dark mt-4">
   <%= render 'devise/shared/links' %>
 </div>

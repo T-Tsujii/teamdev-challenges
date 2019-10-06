@@ -8,12 +8,12 @@
     <table class="table home-index-buttons">
       <tr>
         <td>
-          <%= link_to new_user_session_path, class: "btn btn-primary btn-block", id: "index_sign_in" do %>
+          <%= link_to new_user_session_path, class: "btn btn-success btn-block", id: "index_sign_in" do %>
             <i class="fa fa-sign-in-alt"></i> ログイン
           <% end %>
         </td>
         <td>
-          <%= link_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-primary btn-block", id: "index_twitter", method: :post do %>
+          <%= link_to user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-twitter btn-block", id: "index_twitter", method: :post do %>
             <i class="fab fa-twitter"></i> Twitterでログイン
           <% end %>
         </td>

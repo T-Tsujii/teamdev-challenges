@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-light">
-    <span class="navbar-brand">TeamDev Challenges</span>
+    <%= link_to "TeamDev Challenges", root_path, class: 'navbar-brand' %>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,6 +8,16 @@
       <span class="mr-auto"></span>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
+          <li class="nav-item dropdown active">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-network-wired"></i> オプション
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown_option">
+              <%= link_to "トップページ", root_path, class: 'dropdown-item' %>
+              <%= link_to "協力者募集", homes_recruitment_path, class: 'dropdown-item' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'menu_sign_out' %>
+            </div>
+          </li>
           <li class="nav-item dropdown active">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown_team" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-users"></i> チーム
@@ -25,17 +35,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown_user">
               <%= link_to 'ユーザー一覧', users_path, class: 'dropdown-item' %>
               <%= link_to 'ユーザー情報', user_path(current_user), class: 'dropdown-item' %>
-              <%= link_to 'ユーザー編集', edit_user_path(current_user), class: 'dropdown-item' %>
-            </div>
-          </li>
-          <li class="nav-item dropdown active">
-            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-network-wired"></i> オプション
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown_option">
-              <%= link_to "トップページ", root_path, class: 'dropdown-item' %>
-              <%= link_to "協力者募集", homes_recruitment_path, class: 'dropdown-item' %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'menu_sign_out' %>
+              <%= link_to 'ユーザー編集', edit_user_path(current_user), class: 'dropdown-item', data: { turbolinks: false } %>
             </div>
           </li>
         <% else %>

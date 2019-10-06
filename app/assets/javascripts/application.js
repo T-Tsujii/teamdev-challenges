@@ -13,4 +13,23 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery3
+//= require turbolinks
 //= require_tree .
+
+// 入力値のクリアボタン機能
+$(function () {
+    $('.clear-button').on('click', function () {
+        $(this).parent().find('input').val('');
+        $(this).parent().find('span.clear-button').css('visibility', 'hidden');
+    });
+});
+
+// クリアボタンの表示・非表示
+$(function () {
+    $('input.site-form').on('change', function () {
+        $(this).each(function (index, dom) {
+            var visibility = ($(dom).val() === '') ? 'hidden' : 'visible';
+            $(this).parent().find('span.clear-button').css('visibility', visibility);
+        });
+    }).change();
+});
