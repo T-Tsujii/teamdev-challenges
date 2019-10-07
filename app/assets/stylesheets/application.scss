@@ -86,11 +86,12 @@ input:focus::-moz-placeholder {
   }
 }
 
-// フラッシュメッセージを消す
-.delete_flush_message {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s ease-out, visibility 1s ease-out;
+.error-field {
+  border-color: #dc3545 !important;
+}
+
+.form-control {
+  border-radius: 0.25rem !important;
 }
 
 // クリアボタン

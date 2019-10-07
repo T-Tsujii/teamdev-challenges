@@ -22,7 +22,7 @@
 
   <div class="tab-content">
     <div id="user-base" class="tab-pane active">
-      <%= form_with model: @user do |form| %>
+      <%= form_with model: @user, id: 'base-form' do |form| %>
         <div class="form-group pt-2">
           <%= form.label :name, class: 'control-label' %>
           <% if @user.email == 'guest@example.com' %>
@@ -55,14 +55,14 @@
             <tr>
               <td class="site-name">
                 <div class="input-group">
-                  <%= site_form.text_field :name, class: "form-control site-form",
+                  <%= site_form.text_field :name, class: "form-control site-form empty-check-1",
                     list: 'site-list', placeholder: 'サイト名', maxlength: '30' %>
                   <span class="clear-button"><i class="far fa-times-circle"></i></span>
                 </div>
               </td>
               <td class="site-url">
                 <div class="input-group">
-                  <%= site_form.text_field :url, class: "form-control site-form",
+                  <%= site_form.text_field :url, class: "form-control site-form empty-check-2",
                     placeholder: 'URL', maxlength: '300', pattern: '^|http[s]?:\/\/[\w-]+\.[\w-]+.*$' %>
                   <span class="clear-button"><i class="far fa-times-circle"></i></span>
                 </div>
@@ -80,7 +80,7 @@
           </datalist>
         </table>
         <div class="form-group">
-          <%= form.submit 'リンクを更新する', class: 'btn btn-primary btn-block', id: 'site-button' %>
+          <%= form.submit 'リンクを更新する', class: 'btn btn-primary btn-block', id: 'site-button', data: { value: 'リンクを更新する'} %>
         </div>
       <% end %>
     </div>
